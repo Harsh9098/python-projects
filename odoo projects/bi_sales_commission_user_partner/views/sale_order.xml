@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sale_oder_form_inherit" model="ir.ui.view">
+            <field name="name">sale.oder.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='customer_signature']" position="after">
+                    <page string="Sale Commission User Settings">
+                        <field name="sale_commission_user_ids">
+                            <tree editable="bottom">
+                                <field name="commission_level_id" />
+                                <field name="partner_coman_id" />
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <record id="commission_lines_view" model="ir.ui.view">
+            <field name="name">commission.lines.view</field>
+            <field name="model">sale.commission.line</field>
+            <field name="arch" type="xml">
+                <tree string="Commission Lines" create="false" edit="false">
+                    <field name="commission_date" />
+                    <field name="sales_partner" />
+                    <field name="source_document" />
+                    <field name="amount" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_commission_lines">
+            <field name="name">Commission Lines</field>
+            <field name="res_model">sale.commission.line</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <menuitem
+            id="model_commission_menu"
+            parent="sale.sale_menu_root"
+            name="Commission"
+            sequence="32" />
+        <menuitem parent="model_commission_menu" action="action_commission_lines" sequence="30"
+            name="Commission Lines" id="menu_commission_lines" />
+    </data>
+</odoo>

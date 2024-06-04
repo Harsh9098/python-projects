@@ -1,0 +1,25 @@
+<odoo>
+    <record id="reason_rejection_order_view_form" model="ir.ui.view">
+        <field name="name">reason.rejection.order.view.form</field>
+        <field name="model">order.reject.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Rejection Order">
+                <sheet>
+                    <group>
+                        <field name="reason_rejection" />
+                    </group>
+                </sheet>
+                <footer>
+                <button string="Reject" name="reject_order_wizard" type="object" class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="order_reject_wizard_action" model="ir.actions.act_window">
+        <field name="name">Order Rejection Wizard</field>
+        <field name="res_model">order.reject.wizard</field>
+        <field name="view_mode">form</field>
+    </record>
+
+</odoo>

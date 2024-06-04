@@ -1,0 +1,25 @@
+<odoo>
+    <record id="res_config_settings_view_form_dynamic_approval" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.dynamic.approval</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//block[@name='quotation_order_setting_container']//setting[@id='proforma_configuration']"
+                position="after">
+                <div class="col-12 col-lg-6 o_setting_box" id="dynamic_sale_approval"
+                    title="Ability to select a package type in purchase orders and to force a quantity that is a multiple of the number of units per package.">
+                    <div class="o_setting_left_pane">
+                        <field name="dynamic_approval_check" />
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="dynamic_approval_check" />
+                        <div class="text-muted">
+                            Approval Based on minimum amount Total/Before Tax.
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

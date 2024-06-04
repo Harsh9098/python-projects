@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Define the view for SaleApprovalLine -->
+        <record id="view_approval_line_form" model="ir.ui.view">
+            <field name="name">approval.line.form</field>
+            <field name="model">approval.line</field>
+            <field name="arch" type="xml">
+                <form string="Sale Approval Line">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="approve_process_by" />
+                                <field name="level" />
+                            </group>
+                        </group>
+                        <field name="group_ids" invisible="approve_process_by != 'group'" />
+                        <field name="user_ids" invisible="approve_process_by != 'user'" />
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

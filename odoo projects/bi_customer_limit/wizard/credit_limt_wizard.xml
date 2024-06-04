@@ -1,0 +1,36 @@
+<odoo>
+    <record id="view_customer_credit_limit_wizard" model="ir.ui.view">
+        <field name="name">customer.credit.limit.wizard.form</field>
+        <field name="model">credit.limit.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Customer Credit Limit Wizard">
+                <p>Sorry, your Credit limit has exceeded. You can still confirm Order but a mail
+                    will be sent to administration department. </p>
+                <group>
+                    <group>
+                        <field name="name" />
+                        <field name="credit_limit" />
+                        <field name="total_receivable" />
+                        <field name="due_after" />
+                    </group>
+                    <group>
+                        <field name="current_order" />
+                        <field name="put_on_hold" />
+                        <field name="current_quatations" />
+                        <field name="exceeded_amount" />
+                    </group>
+                </group>
+                <footer>
+                    <button string="Confirm" type="object" class="btn-primary" special="cancel" />
+                    <button string="cancel" class="btn-secondary"
+                        special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="model_credit_limit_wizard_action" model="ir.actions.act_window">
+        <field name="name">Credit Limit Wizard</field>
+        <field name="res_model">credit.limit.wizard</field>
+        <field name="view_mode">form</field>
+    </record>
+</odoo>

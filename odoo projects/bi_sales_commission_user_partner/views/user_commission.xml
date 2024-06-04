@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_users_multi_company_access" model="ir.ui.view">
+        <field name="name">res.users.company.access</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='access_rights']" position="inside">
+                <label for="manage_sale_commission" />
+                <field name="manage_sale_commission" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

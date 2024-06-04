@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_template_form_inherit" model="ir.ui.view">
+        <field name="name">product.template.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='options']" position="inside">
+                <field name="commission_product" />
+                <label for="commission_product" />
+            </xpath>
+            <xpath expr="//page[@name='inventory']" position="after">
+                <page string="Commission Settings" invisible="commission_product == False">
+                    <field name="commission_settings_ids">
+                        <tree editable="bottom">
+                            <field name="commission_level_id" />
+                            <field name="percentage" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

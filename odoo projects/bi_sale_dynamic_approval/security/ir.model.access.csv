@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+bi_sale_dynamic_approval.access_approval,access_approval,bi_sale_dynamic_approval.model_approval,base.group_user,1,1,1,1
+bi_sale_dynamic_approval.access_approval_line,access_approval_line,bi_sale_dynamic_approval.model_approval_line,base.group_user,1,1,1,1
+bi_sale_dynamic_approval.access_sale_order_approved,access_sale_order_approved,bi_sale_dynamic_approval.model_sale_order_approved,base.group_user,1,1,1,1
+bi_sale_dynamic_approval.access_order_reject_wizard,access_order_reject_wizard,bi_sale_dynamic_approval.model_order_reject_wizard,base.group_user,1,1,1,1

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="res_partner_inherit">
+        <field name="name">customer.credit.view.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="account.view_partner_property_form" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//group[@name='accounting_entries']" position="after">
+                    <group name="customer_credit" string="Customer Credit">
+                        <field name="is_credit_limit" />
+                        <field name="credit_limit_customer"
+                            invisible="is_credit_limit != True" />
+                        <field name="blocking_limit"
+                            invisible="is_credit_limit != True"
+                        />
+                        <field name="put_on_hold" />
+                    </group>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="view_sale_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <field name="payment_term_id" position="after">
+                <field name="credit_limit_sale" />
+            </field>
+            <field name="credit_limit_sale" position="after">
+                <field name="total_receivable" />
+                <field name="cross_credit_limit_warnning" invisible="True" />
+            </field>
+            <xpath expr="//header" position="after">
+                <div
+                    style="margin-bottom: 10px; font-weight: bold; color: black; background-color: skyblue;"
+                    invisible="partner_id == False">
+                    <strong>The Customer's Due Amount is:- </strong>
+                    <bold>
+                        <field name="customer_due_amount" />
+                    </bold>
+                </div>
+            </xpath>
+            <xpath expr="//h1" position="before">
+                <div
+                    style="margin-bottom: 10px; font-weight: bold; color: black; background-color: red;"
+                    invisible="cross_credit_limit_warnning == False">
+                    <strong>The Customer's Your credit limit hase been crossed :- </strong>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo> 

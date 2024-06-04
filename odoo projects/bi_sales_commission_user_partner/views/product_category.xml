@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_product_category_form_inherit" model="ir.ui.view">
+            <field name="name">product.category.form.inherit</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/group[@name='first']" position="after">
+                    <notebook>
+                        <page string="Commission Settings">
+                            <field name="product_category_ids">
+                                <tree editable="bottom">
+                                    <field name="commission_level_id" />
+                                    <field name="percentage" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
